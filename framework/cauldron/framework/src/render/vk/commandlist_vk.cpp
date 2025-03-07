@@ -921,10 +921,9 @@ namespace cauldron
             renderingInfo.pDepthAttachment = &depthStencilAttachment;
         }
 
+        VkRenderingFragmentShadingRateAttachmentInfoKHR shadingRateInfo = {};
         if (pVrsInfo != nullptr && pVrsInfo->VariableShadingMode > VariableShadingMode::VariableShadingMode_Per_Draw)
         {
-            VkRenderingFragmentShadingRateAttachmentInfoKHR shadingRateInfo = {};
-
             const RasterView* shadingRateImageView         = GetRasterViewAllocator()->RequestRasterView(pVrsInfo->pShadingRateImage, ViewDimension::Texture2D);
             shadingRateInfo.sType                          = VK_STRUCTURE_TYPE_RENDERING_FRAGMENT_SHADING_RATE_ATTACHMENT_INFO_KHR;
             shadingRateInfo.pNext                          = nullptr;
