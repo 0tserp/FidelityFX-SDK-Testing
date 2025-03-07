@@ -140,7 +140,6 @@ private:
     uint32_t m_ShadingRateIndex            = 0;
     uint32_t m_ShadingRateCombinerIndex    = 0;
     bool     m_EnableShadingRateImage      = false;
-    bool     m_AllowAdditionalShadingRates = false;
     uint32_t m_VRSTierSupported            = 0;
     float    m_VRSThreshold                = 0.015f;
     float    m_VRSMotionFactor             = 0.01f;

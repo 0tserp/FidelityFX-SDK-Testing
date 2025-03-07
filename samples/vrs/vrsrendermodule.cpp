@@ -612,21 +612,6 @@ void VRSRenderModule::ToggleOverlay()
 
 void VRSRenderModule::SelectBaseShadingRate()
 {
-    ShadingRate shadingRate = m_FeatureInfoVRS.ShadingRates[m_ShadingRateIndex];
-    auto        GetFirstSetBitPos = [](int32_t n) { return log2(n & -n) + 1; };
-
-    uint32_t x = (uint32_t)GetFirstSetBitPos(static_cast<uint32_t>(shadingRate) >> SHADING_RATE_SHIFT) - 1;
-    uint32_t y = (uint32_t)GetFirstSetBitPos(static_cast<uint32_t>(shadingRate) & (uint32_t)(ShadingRate1D::ShadingRate1D_1X | ShadingRate1D::ShadingRate1D_2X | ShadingRate1D::ShadingRate1D_4X)) - 1;
-
-    bool isAdditionalShadingRate = (x + y > 2);
-
-    if (isAdditionalShadingRate != m_AllowAdditionalShadingRates)
-    {
-        m_AllowAdditionalShadingRates = isAdditionalShadingRate;
-        UpdateVRSContext(false);
-        UpdateVRSContext(true);
-    }
-
     UpdateVRSInfo();
 }
 
@@ -668,7 +653,7 @@ void VRSRenderModule::UpdateVRSContext(bool enabled)
     }
     else if (enabled && !m_ContextCreated)
     {
-        if (m_AllowAdditionalShadingRates)
+        if (m_FeatureInfoVRS.AdditionalShadingRatesSupported)
             m_InitializationParameters.flags |= FFX_VRS_ALLOW_ADDITIONAL_SHADING_RATES;
 
         m_InitializationParameters.shadingRateImageTileSize = m_FeatureInfoVRS.MaxTileSize[0];
