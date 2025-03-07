@@ -215,6 +215,7 @@ namespace cauldron
 
     void AnimationComponent::Update(double time)
     {
+        return;
         UpdateLocalMatrix(0, static_cast<float>(time));
     }
 
