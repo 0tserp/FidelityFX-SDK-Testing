@@ -27,6 +27,7 @@
 
 // Cauldron render modules
 #include "gbuffer/gbufferrendermodule.h"
+#include "forward/forwardrendermodule.h"
 #include "gpuparticle/gpuparticlerendermodule.h"
 #include "lighting/lightingrendermodule.h"
 #include "rastershadow/rastershadowrendermodule.h"
@@ -44,6 +45,7 @@ namespace rendermodule
     {
         RenderModuleFactory::RegisterModule<SkyDomeRenderModule>("SkyDomeRenderModule");
         RenderModuleFactory::RegisterModule<GBufferRenderModule>("GBufferRenderModule");
+        RenderModuleFactory::RegisterModule<ForwardRenderModule>("ForwardRenderModule");
         RenderModuleFactory::RegisterModule<GPUParticleRenderModule>("GPUParticleRenderModule");
         RenderModuleFactory::RegisterModule<LightingRenderModule>("LightingRenderModule");
         RenderModuleFactory::RegisterModule<RasterShadowRenderModule>("RasterShadowRenderModule");

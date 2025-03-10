@@ -1,0 +1,13 @@
+{
+    "ForwardRenderModule": {
+        "RenderResources": {
+            "MotionVectorTarget": {
+                "Format": "RG16_FLOAT"
+            }
+        },
+
+        "RenderModuleOptions": {
+            "VariableShading":  false
+        }
+    }
+}

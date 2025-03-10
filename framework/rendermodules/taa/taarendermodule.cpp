@@ -43,7 +43,7 @@ void TAARenderModule::Init(const json& initData)
     m_pColorBuffer = GetFramework()->GetColorTargetForCallback(GetName());
     m_pDepthBuffer = GetFramework()->GetRenderTexture(L"DepthTarget");
     m_pHistoryBuffer = GetFramework()->GetRenderTexture(L"TAAHistoryBufferTarget");
-    m_pVelocityBuffer = GetFramework()->GetRenderTexture(L"GBufferMotionVectorRT");
+    m_pVelocityBuffer = GetFramework()->GetRenderTexture(L"MotionVectorTarget");
     m_pTAAOutputBuffer = GetFramework()->GetRenderTexture(L"TAAOutputBufferTarget");
 
     InitTaa();

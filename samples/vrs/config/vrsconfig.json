@@ -6,8 +6,7 @@
         "RenderModules": [
             "RasterShadowRenderModule",
             "VRSRenderModule",
-            "GBufferRenderModule",
-            "LightingRenderModule",
+            "ForwardRenderModule",
             "SkyDomeRenderModule",
             "TranslucencyRenderModule",
             "TAARenderModule",
@@ -15,7 +14,7 @@
         ],
 
         "RenderModuleOverrides": {
-            "GBufferRenderModule": {
+            "ForwardRenderModule": {
                 "VariableShading": true
             },
             "TranslucencyRenderModule": {

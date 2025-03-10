@@ -358,8 +358,8 @@ void VRSRenderModule::InitOverlay(const json& initData)
 
 void VRSRenderModule::InitMotionVectors(const json& initData)
 {
-    m_pMotionVectors = GetFramework()->GetRenderTexture(L"GBufferMotionVectorRT");
-    m_pDepthTarget   = GetFramework()->GetRenderTexture(L"GBufferDepth");
+    m_pMotionVectors = GetFramework()->GetRenderTexture(L"MotionVectorTarget");
+    m_pDepthTarget   = GetFramework()->GetRenderTexture(L"DepthTarget");
 
     m_pMotionVectorsRasterView = GetRasterViewAllocator()->RequestRasterView(m_pMotionVectors, ViewDimension::Texture2D);
     m_pDepthRasterView         = GetRasterViewAllocator()->RequestRasterView(m_pDepthTarget, ViewDimension::Texture2D);

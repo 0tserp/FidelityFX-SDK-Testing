@@ -39,6 +39,17 @@ file(GLOB gbuffer_shaders
 set_source_files_properties(${gbuffer_shaders} PROPERTIES VS_TOOL_OVERRIDE "Text")
 copyCommand("${gbuffer_shaders}" ${SHADER_OUTPUT})
 
+# Forward
+file(GLOB forward_src
+    ${CMAKE_CURRENT_SOURCE_DIR}/forward/*.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/forward/*.cpp)
+set(forward_config ${CMAKE_CURRENT_SOURCE_DIR}/forward/config/forwardrendermodule.json)
+file(GLOB forward_shaders
+    ${CMAKE_CURRENT_SOURCE_DIR}/forward/shaders/*.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/forward/shaders/*.hlsl)
+set_source_files_properties(${forward_shaders} PROPERTIES VS_TOOL_OVERRIDE "Text")
+copyCommand("${forward_shaders}" ${SHADER_OUTPUT})
+
 # Animated textures
 file(GLOB animatedtextures_src
     ${CMAKE_CURRENT_SOURCE_DIR}/animatedtextures/*.h
@@ -117,6 +128,7 @@ copyCommand("${gpuparticle_shaders}" ${SHADER_OUTPUT})
 # Copy config files to output directory
 file(GLOB configFiles
     ${gbuffer_config}
+    ${forward_config}
     ${translucency_config}
 	${raster_shadow_config}
     ${skydome_config}
@@ -128,6 +140,7 @@ add_library (RenderModules STATIC
                         ${registry_src}
 						# Cauldron rendermodules
                         ${gbuffer_src} ${gbuffer_config} ${gbuffer_shaders}
+                        ${forward_src} ${forward_config} ${forward_shaders}
 						${animatedtextures_src} ${animatedtextures_config} ${animatedtextures_shaders}
                         ${translucency_src} ${translucency_config} ${translucency_shaders}
                         ${lighting_src} ${lighting_shaders}
@@ -146,10 +159,13 @@ source_group(""								FILES ${registry_src})
 # Cauldron rendermodules
 source_group("GBuffer"						FILES ${gbuffer_src})
 source_group("GBuffer\\Config"				FILES ${gbuffer_config})
+source_group("Forward"						FILES ${forward_src})
+source_group("Forward\\Config"				FILES ${forward_config})
 source_group("Animated Textures"			FILES ${animatedtextures_src})
 source_group("Animated Textures\\Shaders"	FILES ${animatedtextures_shaders})
 
 source_group("GBuffer\\Shaders"				FILES ${gbuffer_shaders})
+source_group("Forward\\Shaders"				FILES ${forward_shaders})
 source_group("GPUParticle"					FILES ${gpuparticle_src})
 source_group("GPUParticle\\Shaders"			FILES ${gpuparticle_shaders})
 source_group("Translucency"					FILES ${translucency_src})
